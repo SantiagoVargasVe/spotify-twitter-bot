@@ -6,7 +6,7 @@ const saveTokens = async (authorizationCode) => {
   let bodyData = {
     grant_type: 'authorization_code',
     code: authorizationCode,
-    redirect_uri: 'http://localhost:7000/spotify/home',
+    redirect_uri: `http://${process.env.CURRENT_URL}/spotify/home`,
     client_id: process.env.CLIEND_ID_SPOTIFY,
     client_secret: process.env.CLIENT_SECRET_SPOTIFY
   }
