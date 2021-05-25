@@ -6,9 +6,6 @@ require('dotenv').config()
 const spotifyRouter = require('./routes/spotify')
 const twitterRouter = require('./routes/twitter')
 
-var indexRouter = require('./routes/index')
-var usersRouter = require('./routes/users')
-
 var app = express()
 
 app.use(logger('dev'))
@@ -20,9 +17,8 @@ if (typeof localStorage === 'undefined' || localStorage === null) {
   let LocalStorage = require('node-localstorage').LocalStorage
   localStorage = new LocalStorage('./playground')
 }
-app.use('/', indexRouter)
-app.use('/users', usersRouter)
+
 app.use('/spotify', spotifyRouter)
-app.use('/twitter', twitterRouter)
+app.use('/start', twitterRouter)
 
 module.exports = app

@@ -11,7 +11,7 @@ const changeBio = async (newBio) => {
     access_token_secret: process.env.ACCESS_TOKEN_SECRET_TWITTER
   })
 
-  let client_response = client.post('account/update_profile', {
+  client.post('account/update_profile', {
     description: newBio
   })
 }
