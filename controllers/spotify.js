@@ -44,7 +44,6 @@ const getUserInfoStatus = async () => {
 }
 
 const getNewToken = async () => {
-  console.log('Entre a new token')
   let localStorage = new LocalStorage('./playground')
   let spotifyURL = new URL('https://accounts.spotify.com/api/token')
   let toCodeString = `${process.env.CLIEND_ID_SPOTIFY}:${process.env.CLIENT_SECRET_SPOTIFY}`
@@ -78,7 +77,6 @@ const getUserSong = async () => {
   })
   if (response.status === 401) {
     let data = await response.text()
-    console.log(data)
     return
   } else if (response.status === 200) {
     let data = await response.json()

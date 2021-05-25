@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 require('dotenv').config()
 const spotifyRouter = require('./routes/spotify')
+const twitterRouter = require('./routes/twitter')
 
 var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
@@ -22,5 +23,6 @@ if (typeof localStorage === 'undefined' || localStorage === null) {
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
 app.use('/spotify', spotifyRouter)
+app.use('/twitter', twitterRouter)
 
 module.exports = app

@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     let params = {
       client_id: process.env.CLIEND_ID_SPOTIFY,
       response_type: 'code',
-      redirect_uri: 'http://localhost:7000/spotify/home',
+      redirect_uri: `http://${process.env.CURRENT_URL}/spotify/home`,
       scope: 'user-read-playback-state'
     }
     spotifyUrl.search = new URLSearchParams(params).toString()
@@ -53,8 +53,7 @@ router.get('/current_song', checkToken, async (req, res) => {
   if (data) {
     res.status(200).send(data)
   } else {
-    console.log('Entre')
-    res.status(404).send('Not playing song')
+    res.status(404).send({error: 'Not playing a song'})
   }
 })
 
